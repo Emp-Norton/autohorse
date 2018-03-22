@@ -38,6 +38,10 @@
 <script>
 	/* TODO: 
 		- add listener for 'enter' key press while taking active notes
+		- handle upper and lower case grading keys ('a+/-', 'h+/-')
+		- handle grading keys of either case appearing anywhere in the note 
+		- more robust typo prevention (a => qwsxz, h => gyujnb)
+		
 	*/
 	window.stampedNotes = [];
 	window.errorZone = [];
@@ -189,7 +193,7 @@
 		getTally();
 		// update our results
 		updateResults()
-		// add our new note list to the now-empty note storage area in the DOM
+		// add our new note list to the now-empty note storage area in the addToDOM
 		addToDOM(window.stampednotes)
 	}
 
