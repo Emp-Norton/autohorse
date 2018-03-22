@@ -67,7 +67,8 @@ h1 {
 
 #initialLoadOptions {
 	display: flex;
-	justify-content: center
+	justify-content: center;
+	margin-top: 150px;
 }
 
 #notes {

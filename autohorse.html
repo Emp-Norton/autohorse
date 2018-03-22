@@ -135,7 +135,7 @@
 
 	  let chars = input.split('');
 	  for (let index = 0; index < chars.length; index++) {
-	    if (chars[index] === "a") {
+	    if (chars[index] === "a" || chars[index] == "A") {
 	      if (chars[index + 1] === "+") {
 	        autonomyPlus++;
 	      }
@@ -144,7 +144,7 @@
 	      }
 	    }
 	    
-	    if (chars[index] === "h") {
+	    if (chars[index] === "h" || chars[index] == 'H') {
 	      if (chars[index + 1] === "+") {
 	        horsepowerPlus++;
 	      }
@@ -225,7 +225,7 @@
 	}
 
 
-	// setup event listeners for submit buttons
+	// setup event listeners for buttons
 	document.querySelector('#submitNotes').addEventListener('click', evaluateNotes);
 	document.querySelector('#activeNoteSubmit').addEventListener('click', stampNote);
 	document.querySelector('#takeActiveNotes').addEventListener('click', showActiveTools);
