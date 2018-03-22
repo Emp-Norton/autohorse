@@ -1,0 +1,94 @@
+body {
+	display: block;
+	text-align: center;
+}
+
+h1 {
+
+}
+
+.inputContainer {
+	display: block;
+	
+}
+
+.navBar {
+	display: flex;
+	background-color: #2d3886;
+	height: 70px;
+	border-radius: 5px;
+}
+
+.navlink {
+	margin: 15px;
+	font-size: x-large;
+	text-decoration: none;
+	color: white /*333130*/;
+}
+
+.titleHeader {
+	display: block;
+	justify-content: center;
+}
+
+#activeNote {
+	height: 50px;
+	width: 200px;
+}
+
+#activeNoteSubmit {
+	height: 55px;
+	width: 200px;
+}
+
+#activeNotes {
+	display: block;
+}
+
+#autonomyResult {
+	margin: 15px;
+	transition: all 1s linear;
+	display: none;
+	font-size: xx-large;
+	border: 2px solid;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+#horsepowerResult {
+	margin: 15px;
+	transition: all 0.5s ease;
+	display: none;
+	font-size: xx-large;
+	border: 2px solid;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+#notes {
+	text-align: left;
+}
+
+#notesInput {
+	height: 250px;
+	width: 250px;
+}
+
+#potentialErrors {
+	margin: 15px;
+	transition: all 0.5s ease;
+	display: none;
+	font-size: xx-large;
+	border: 2px solid;
+	border-radius: 5px;
+	padding: 15px;
+}
+#resultsContainer {
+	display: flex;
+	justify-content: center;
+}
+
+#submitNotes {
+	width: 250px;
+	height: 55px;
+}

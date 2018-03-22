@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> Autohorse </title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="navBar">
+		<a class="navlink" href="#"> HR Salesforce</a>
+		<a class="navlink" href="#"> Another Useful Link </a>
+	</div>
+	<div class="titleHeader">
+		<img src="http://www.makeithappen.org/bilder/autologga.jpg"/>
+		<h1> Doing simple math so YOU don't have to! </h1>
+	</div>
+
+	<div id="resultsContainer">
+		<div id="horsepowerResult"></div>
+		<div id="autonomyResult"></div>
+		<div id="potentialErrors"></div>
+	</div>
+
+
+	<div id="notes"></div>
+	<div class="inputContainer">
+		<textarea id="notesInput" value="Paste your notes here"> </textarea>
+		<br>
+		<button id="submitNotes">Submit</button>
+	</div>
+	<hr>
+	<div id="activeNotes">
+		<input type="text" id="activeNote" placeholder="Take a stamped note"/>
+		<button id="activeNoteSubmit">Stamp it!</button>
+	</div>
+
+
+</body>
+<script>
+	/* TODO: 
+		- add listener for 'enter' key press while taking active notes
+	*/
+	window.stampedNotes = [];
+	window.errorZone = [];
+	let addToDOM = (notes) => {
+		let parts;
+		// check for active timestamped notes on window 
+			// if found, assign to "parts"
+		// else split notes on newline character for access to each specific timestamp
+		window.stampedNotes.length > 0 ? parts = window.stampedNotes : parts = notes.split('\n')
+		// iterate through parts one timestamp at a time 
+		parts.forEach(part => {
+			// 
+			let potentialError;
+			let errorZone;
+			// grab last four characters of timestamp note to check for typos
+			let grades = part.slice(part.length-4, part.length);
+			if (grades.includes('=')) {
+				// common typo found, push to window's errorzone
+				potentialError = true;
+				errorLine = part.split(' ')[0];
+				window.errorZone.push(errorLine)
+			}
+			// create div to store notes
+			let partDiv = document.createElement("p");
+			// add markup tags to make timestamp bold and highlight potential typos
+			partDiv.innerHTML = potentialError ? `<p><b>${part.split(' ')[0]} - </b>${part.split(' ').slice(2).join(' ')}<h3 style="color: red"> ERROR ^^^ </h3></p>` : `<p><b>${part.split(' ')[0]} - </b>${part.split(' ').slice(2).join(' ')}</p>`
+			// append the timestamped / marked-up note to DOM
+			document.querySelector('#notes').append(partDiv);
+		});
+		// create a horizontal rule and some whitespace below notes
+		let horizRule = document.createElement("div");
+		horizRule.innerHTML = "<hr><br>"
+		document.querySelector('#notes').append(horizRule)
+		// hide our input interface after submitting
+		document.querySelector('.inputContainer').style.display = 'none'
+		
+	}
+
+	let updateResults =  () => {
+		let autonomy = window.totalAutonomy;
+		let horsepower = window.totalHorsepower;
+		// grab our result divs for reference 
+		const autoResult = document.querySelector('#autonomyResult');
+		const horseResult = document.querySelector('#horsepowerResult');
+		// make our result divs visible
+		autoResult.style.display = "flex"
+		horseResult.style.display = "flex"
+		// assign border colors based on positivity or negativity of result
+		autonomy > 0 ? autoResult.style.borderColor = "green" : autonomyResult.style.borderColor ="red";
+		horsepower > 0 ? horseResult.style.borderColor = "green" : horseResult.style.borderColor = "red";
+		// add the resulting values to the spans in our results divs
+		autoResult.innerHTML = `Autonomy: ${autonomy}`;
+		horseResult.innerHTML = `Horsepower: ${horsepower}`;
+
+
+	}
+
+	let getTally = (input) => {
+		input = input ? input : window.stampedNotes.join('')
+		let autonomyPlus = 0;
+	  let autonomyMinus = 0;
+	  let horsepowerPlus = 0;
+	  let horsepowerMinus = 0;
+
+	  let chars = input.split('');
+	  for (let index = 0; index < chars.length; index++) {
+	    if (chars[index] === "a") {
+	      if (chars[index + 1] === "+") {
+	        autonomyPlus++;
+	      }
+	      if (chars[index + 1] === "-") {
+	        autonomyMinus++;
+	      }
+	    }
+	    
+	    if (chars[index] === "h") {
+	      if (chars[index + 1] === "+") {
+	        horsepowerPlus++;
+	      }
+	      if (chars[index + 1] === "-") {
+	        horsepowerMinus++;
+	      }
+	    }
+	  }
+	  
+	  window.totalAutonomy = autonomyPlus - autonomyMinus;
+	  window.totalHorsepower = horsepowerPlus - horsepowerMinus;
+
+	}
+
+	let evaluateNotes = () => {
+		// grab submitted notes
+		let input = document.querySelector('#notesInput').value;
+		// hide active note-taking tools
+		document.querySelector('#activeNotes').style.display = 'none';
+		
+
+	  getTally(input);
+	  // formate notes and add to DOM
+	  addToDOM(input)
+	  // update results from tally 
+	  updateResults();
+	 
+	}
+
+	let stampNote = () => {
+		// check if there's currently a timer running
+		if (!window.timer) {
+			// start one if not
+			window.timer = 0;
+			// increment it every second
+			setInterval(function() {
+				window.timer++;
+			}, 1000)
+		}
+
+		// grab note from active note field 
+		let note = document.querySelector('#activeNote').value;
+		// calculate time elapsed since timer start / first note stamped
+		let seconds = (timer % 60).toString();
+		let minutes = parseInt(timer / 60).toString();
+		let hours = parseInt(timer / 3600).toString();
+
+		// add a "0" for aesthetic purposes
+		if (minutes.length < 2) {
+			minutes = '0'.concat(minutes);
+		}
+
+		if (hours.length < 2) {
+			hours = '0'.concat(hours);
+		}
+
+		if (seconds.length < 2) {
+			seconds = '0'.concat(seconds);
+		}
+
+		// put stamp together
+		let timeStamp = [hours, minutes, seconds].join(':');
+		// join it with the note in a string 
+		let stampedNote = `${timeStamp} - ${note}`;
+		// add to the running list on window object
+		window.stampedNotes.push(stampedNote);
+		// reset our note holder area 
+		document.querySelector('#activeNote').value = '';
+		document.querySelector('#notes').innerHTML = '';
+		
+
+		// get new tally
+		getTally();
+		// update our results
+		updateResults()
+		// add our new note list to the now-empty note storage area in the DOM
+		addToDOM(window.stampednotes)
+	}
+
+
+	// setup event listeners for submit buttons
+	document.querySelector('#submitNotes').addEventListener('click', evaluateNotes);
+	document.querySelector('#activeNoteSubmit').addEventListener('click', stampNote);
+</script>
+</html>
+
