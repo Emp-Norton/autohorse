@@ -14,6 +14,11 @@
 		<h1> Doing simple math so YOU don't have to! </h1>
 	</div>
 
+	<div id="initialLoadOptions">
+		<button id="takeActiveNotes"> Take Active Notes </button>
+		<button id="submitExistingNotes"> Submit Existing Notes </button>
+	</div>
+
 	<div id="resultsContainer">
 		<div id="horsepowerResult"></div>
 		<div id="autonomyResult"></div>
@@ -22,12 +27,15 @@
 
 
 	<div id="notes"></div>
+
 	<div class="inputContainer">
 		<textarea id="notesInput" value="Paste your notes here"> </textarea>
 		<br>
 		<button id="submitNotes">Submit</button>
 	</div>
+
 	<hr>
+
 	<div id="activeNotes">
 		<input type="text" id="activeNote" placeholder="Take a stamped note"/>
 		<button id="activeNoteSubmit">Stamp it!</button>
@@ -41,8 +49,27 @@
 		- handle upper and lower case grading keys ('a+/-', 'h+/-')
 		- handle grading keys of either case appearing anywhere in the note 
 		- more robust typo prevention (a => qwsxz, h => gyujnb)
-		
+
 	*/
+
+	// hide our tools at initial load 
+	document.querySelector('.inputContainer').style.display = 'none';
+	document.querySelector('#activeNotes').style.display = 'none';
+
+	let hideOptions = () => {
+		document.querySelector('#initialLoadOptions').style.display = 'none';
+	}
+
+	let showActiveTools = () => {
+		hideOptions();
+		document.querySelector('#activeNotes').style.display = 'block';
+	}
+
+	let showPassiveTools = () => {
+		hideOptions();
+		document.querySelector('.inputContainer').style.display = 'block';
+	}
+
 	window.stampedNotes = [];
 	window.errorZone = [];
 	let addToDOM = (notes) => {
@@ -201,6 +228,8 @@
 	// setup event listeners for submit buttons
 	document.querySelector('#submitNotes').addEventListener('click', evaluateNotes);
 	document.querySelector('#activeNoteSubmit').addEventListener('click', stampNote);
+	document.querySelector('#takeActiveNotes').addEventListener('click', showActiveTools);
+	document.querySelector('#submitExistingNotes').addEventListener('click', showPassiveTools)
 </script>
 </html>
 

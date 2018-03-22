@@ -65,6 +65,11 @@ h1 {
 	padding: 15px;
 }
 
+#initialLoadOptions {
+	display: flex;
+	justify-content: center
+}
+
 #notes {
 	text-align: left;
 }
@@ -88,7 +93,29 @@ h1 {
 	justify-content: center;
 }
 
+/* merge this with other options button as a class */ 
+#submitExistingNotes {
+	margin: 15px;
+	background-color: #2d3886;
+	border-radius: 5px;
+	color: white;
+	height: 120px;
+	width: 190px;
+	font-size: xx-large;
+}
+
 #submitNotes {
 	width: 250px;
 	height: 55px;
 }
+
+#takeActiveNotes {
+	margin: 15px;
+	background-color: #2d3886;
+	border-radius: 5px;
+	color: white;
+	height: 120px;
+	width: 190px;
+	font-size: xx-large;
+}
+
