@@ -7,9 +7,19 @@ h1 {
 
 }
 
+.tallyAttribute {
+	transform: scale(1.1);
+  border-color: #ffc600;
+  border-width: 5px;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
 .inputContainer {
 	display: block;
-	
+}
+
+.mainContainer {
+	display: flex;
 }
 
 .navBar {
@@ -32,8 +42,9 @@ h1 {
 }
 
 #activeNote {
+	margin-bottom: 50px;
 	height: 50px;
-	width: 200px;
+	width: 400px;
 }
 
 #activeNoteSubmit {
@@ -42,6 +53,9 @@ h1 {
 }
 
 #activeNotes {
+	position: fixed;
+	bottom: 45px;
+	margin-left: 45%;
 	display: block;
 }
 
@@ -53,6 +67,11 @@ h1 {
 	border: 2px solid;
 	border-radius: 5px;
 	padding: 15px;
+}
+
+#copyToClipboard {
+	height: 55px;
+	width: 200px;
 }
 
 #horsepowerResult {
@@ -72,7 +91,10 @@ h1 {
 }
 
 #notes {
+	display: none;
 	text-align: left;
+	width: 500px;
+	height: 500px;
 }
 
 #notesInput {
@@ -87,13 +109,19 @@ h1 {
 	font-size: xx-large;
 	border: 2px solid;
 	border-radius: 5px;
-	padding: 15px;
+	padding: 5px;
 }
 #resultsContainer {
-	display: flex;
+	display: inline-block;
 	justify-content: center;
 }
 
+#subbedNotes {
+	display: none;
+	text-align: left;
+	width: 500px;
+	height: 500px;
+}
 /* merge this with other options button as a class */ 
 #submitExistingNotes {
 	margin: 15px;
