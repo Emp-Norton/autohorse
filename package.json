@@ -1,0 +1,21 @@
+{
+  "name": "autohorse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emp-Norton/autohorse.git"
+  },
+  "author": "James Jelenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emp-Norton/autohorse/issues"
+  },
+  "homepage": "https://github.com/Emp-Norton/autohorse#readme"
+}

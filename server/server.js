@@ -6,6 +6,8 @@ app.get('/', (req, res) => {
 	 res.sendFile(path.join(__dirname + '/../public/autohorse.html'))
 })
 
-app.listen(3000, function() {
+app.set('port', process.env.PORT || 3000);
+
+app.listen(port, function() {
 	console.log('listening on 3000');
 })
