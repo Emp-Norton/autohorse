@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.set('port', process.env.PORT || 3000);
-app.listen(port, function() {
+app.set('PORT', process.env.PORT || 3000);
+app.listen(PORT, function() {
 	console.log('listening on 3000');
 })
