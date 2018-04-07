@@ -1,0 +1,159 @@
+body {
+	display: block;
+	text-align: center;
+}
+
+h1 {
+
+}
+
+.tallyAttribute {
+	transform: scale(1.3);
+  border-color: #ffc600;
+  border-width: 5px;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+.inputContainer {
+	display: block;
+}
+
+.mainContainer {
+	display: flex;
+}
+
+.navBar {
+	display: flex;
+	background-color: #2d3886;
+	height: 70px;
+	border-radius: 5px;
+}
+
+.navlink {
+	margin: 15px;
+	font-size: x-large;
+	text-decoration: none;
+	color: white /*333130*/;
+}
+
+.titleHeader {
+	display: block;
+	justify-content: center;
+}
+
+#activeNote {
+	display: flex;
+	margin-bottom: 50px;
+	height: 50px;
+	width: 600px;
+}
+
+#activeNoteSubmit {
+	height: 55px;
+	width: 200px;
+}
+
+#activeNotes {
+	position: fixed;
+	bottom: 45px;
+	margin-left: 45%;
+	display: inline;
+}
+
+#autonomyResult {
+	margin: 15px;
+	transition: all .07s ease;
+	display: none;
+	font-size: xx-large;
+	border: 2px solid;
+	border-radius: 5px;
+	height: 35px;
+	padding: 15px;
+}
+
+#copyToClipboard {
+	height: 55px;
+	width: 200px;
+}
+
+#horsepowerResult {
+	margin: 15px;
+	transition: all .07s ease;
+	display: none;
+	font-size: xx-large;
+	border: 2px solid;
+	border-radius: 5px;
+	height: 35px;
+	padding: 15px;
+}
+
+#initialLoadOptions {
+	display: flex;
+	justify-content: center;
+	margin-top: 150px;
+}
+
+#notes {
+	display: none;
+	text-align: left;
+	width: 500px;
+	height: 500px;
+}
+
+#notesInput {
+	height: 250px;
+	width: 250px;
+}
+
+#potentialErrors {
+	margin: 15px;
+	transition: all 0.5s ease;
+	display: none;
+	font-size: xx-large;
+	border: 2px solid;
+	border-radius: 5px;
+	padding: 5px;
+}
+#resultsContainer {
+	display: flex;
+	justify-content: center;
+}
+
+#subbedNotes {
+	display: none;
+	text-align: left;
+	width: 500px;
+	height: 500px;
+}
+/* merge this with other options button as a class */ 
+#submitExistingNotes {
+	margin: 15px;
+	background-color: #2d3886;
+	border-radius: 5px;
+	color: white;
+	height: 120px;
+	width: 190px;
+	font-size: xx-large;
+}
+
+#submitNotes {
+	width: 250px;
+	height: 55px;
+}
+
+#takeActiveNotes {
+	margin: 15px;
+	background-color: #2d3886;
+	border-radius: 5px;
+	color: white;
+	height: 120px;
+	width: 190px;
+	font-size: xx-large;
+}
+
+#toggleErrorDisplay {
+	flex: 1;
+	height: 55px;
+	width: 200px;
+}
+
