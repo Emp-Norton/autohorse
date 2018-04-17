@@ -42,8 +42,8 @@
 		errorHeader.innerHTML = '<h3 style="color: red"> Error </h3>'
 		// append it to the div
 		errorNotificationArea.append(errorHeader)
-		// make the notification area visible
-		errorNotificationArea.style.display = 'block';
+		// make the notification area visible if the showErrors property is true 
+		if (window.showErrors) errorNotificationArea.style.display = 'block';
 		// iterate through errors on the window's error property 
 		window.errorZone.forEach(error => {
 			// create a div to store each error line 
@@ -82,7 +82,7 @@
 					// save it if not 
 				if (!window.errorZone.includes(errorLine)) window.errorZone.push(errorLine)
 					// update our errors div / create one if necessary
-				updateErrors();
+			  updateErrors();
 			}
 			// create div to store note line 
 			let partDiv = document.createElement("p");
@@ -185,13 +185,13 @@
 			setInterval(function() {
 				window.timer++;
 			}, 1000)
-		}
+		} 
 
 		// grab note from active note field 
 		let note = document.querySelector('#activeNote').value;
 		// calculate time elapsed since timer start / first note stamped
 		let seconds = (timer % 60).toString();
-		let minutes = parseInt(timer / 60).toString();
+		let minutes = parseInt((timer / 60) % 60).toString();
 		let hours = parseInt(timer / 3600).toString();
 
 		// add a "0" for aesthetic purposes
@@ -229,8 +229,10 @@
 	let toggleErrorDisplay = () => {
 		let errorDisplay = document.querySelector('#potentialErrors'); 
 		if (errorDisplay.style.display == "none") {
+			window.showErrors = true;
 			errorDisplay.style.display = "block";
 		} else {
+			window.showErrors = false;
 			errorDisplay.style.display = "none";
 		}
 	}
@@ -241,6 +243,7 @@
   }
 
 	let init = () => { 
+		window.showErrors = true;
 		console.log('run')
 		// setup event listeners for buttons
 		document.querySelector('#copyToClipboard').addEventListener('click', addToClip);
