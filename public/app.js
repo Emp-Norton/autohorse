@@ -73,7 +73,7 @@
 			let potentialError;
 			// grab last four characters of timestamp note to check for typos
 			let grades = part.slice(part.length-4, part.length);
-			if (grades.includes('=') || grades.includes("0")) {
+			if (grades.includes('=')) {
 				// common typo found, push to window's errorzone
 				potentialError = true;
 				// isolate timestamp of line with error in it
