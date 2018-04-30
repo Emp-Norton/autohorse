@@ -19,6 +19,9 @@
 	}
 
 	let showActiveTools = () => {
+		let button = document.querySelector('#takeActiveNotes');
+		button.classList.add('highlightSelection');
+		console.log(button)
 		hideOptions();
 		document.querySelector('#notes').style.display = 'block';
 		document.querySelector('#activeNotes').style.display = 'block';
